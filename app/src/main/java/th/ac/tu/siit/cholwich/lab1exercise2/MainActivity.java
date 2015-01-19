@@ -4,6 +4,10 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 
 
 public class MainActivity extends Activity {
@@ -35,5 +39,39 @@ public class MainActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void Convert(View v){
+        EditText etInput = (EditText)findViewById(R.id.etInput);
+        String s = etInput.getText().toString();
+        Double val = Double.parseDouble(s);
+        Double cel = 0.0;
+
+        RadioGroup rgFrom = (RadioGroup)findViewById(R.id.rgFrom);
+        RadioGroup rgTo = (RadioGroup)findViewById(R.id.rgTo);
+        int selFrom = rgFrom.getCheckedRadioButtonId();
+        int selTo = rgTo.getCheckedRadioButtonId();
+
+        TextView tv = (TextView)findViewById(R.id.tvOutput);
+
+
+        if (selFrom == R.id.rbFrmC) { //The user wants to convert from Celsius.
+            cel = val;
+        } else if(selFrom == R.id.rbFrmF){
+            cel = (val-32) *5/9;
+
+        } else if(selFrom == R.id.rbFrmK){
+            cel = val - 273.15;
+        }
+
+        if(selTo == R.id.rbToF){
+            cel = cel*9/5+32;
+        } else if(selTo == R.id.rbToK){
+            cel = val + 273.15;
+        }
+
+        tv.setText(Double.toString(cel));
+
+
     }
 }
