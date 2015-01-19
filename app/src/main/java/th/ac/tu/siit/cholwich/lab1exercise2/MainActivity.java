@@ -44,7 +44,7 @@ public class MainActivity extends Activity {
     public void Convert(View v){
         EditText etInput = (EditText)findViewById(R.id.etInput);
         String s = etInput.getText().toString();
-        Double val = Double.parseDouble(s);
+        Double val= Double.parseDouble(s);
         Double cel = 0.0;
 
         RadioGroup rgFrom = (RadioGroup)findViewById(R.id.rgFrom);
@@ -53,6 +53,7 @@ public class MainActivity extends Activity {
         int selTo = rgTo.getCheckedRadioButtonId();
 
         TextView tv = (TextView)findViewById(R.id.tvOutput);
+
 
 
         if (selFrom == R.id.rbFrmC) { //The user wants to convert from Celsius.
