@@ -44,7 +44,17 @@ public class MainActivity extends Activity {
     public void Convert(View v){
         EditText etInput = (EditText)findViewById(R.id.etInput);
         String s = etInput.getText().toString();
-        Double val= Double.parseDouble(s);
+
+        Double val = 0.0;
+
+        try {
+            val = Double.parseDouble(s);
+        }
+        catch(Exception e)
+        {
+
+        }
+
         Double cel = 0.0;
 
         RadioGroup rgFrom = (RadioGroup)findViewById(R.id.rgFrom);
@@ -68,7 +78,7 @@ public class MainActivity extends Activity {
         if(selTo == R.id.rbToF){
             cel = cel*9/5+32;
         } else if(selTo == R.id.rbToK){
-            cel = val + 273.15;
+            cel = cel + 273.15;
         }
 
         tv.setText(Double.toString(cel));
